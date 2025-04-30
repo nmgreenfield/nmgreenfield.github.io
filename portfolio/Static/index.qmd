@@ -1,0 +1,14 @@
+---
+title: "Quarto Dashboards (Static)"
+description: "Static dashboard visualizing each country's trust in science and knowledge of science."
+draft: false
+toc: false
+---
+
+## My Shiny Dashboard
+
+<iframe src="https://nmgreenfield.quarto.pub/lab-3/"
+        width="200%"
+        height="800px"
+        frameborder="0">
+</iframe>

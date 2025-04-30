@@ -3,12 +3,12 @@ project:
   output-dir: docs
 
 website:
-  title: "nmgreenfield.github.io"
   navbar:
-    left:
+    title: STAT 541 Portfolio
+    right:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - portfolio.qmd
 
 format:
   html:

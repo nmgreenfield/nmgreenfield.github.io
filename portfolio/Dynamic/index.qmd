@@ -1,0 +1,14 @@
+---
+title: "Quarto Dashboards (Dynamic)"
+description: "Dynamic dashboard visualizing each country's trust in science and knowledge of science."
+draft: false
+toc: false
+---
+
+## My Shiny Dashboard
+
+<iframe src="https://nathan-greenfield.shinyapps.io/dashboard/"
+        width="200%"
+        height="800px"
+        frameborder="0">
+</iframe>
