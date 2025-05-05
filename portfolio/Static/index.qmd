@@ -1,6 +1,7 @@
 ---
 title: "Quarto Dashboards (Static)"
 description: "Static dashboard visualizing each country's trust in science and knowledge of science."
+order: 2
 draft: false
 toc: false
 ---
@@ -12,3 +13,8 @@ toc: false
         height="800px"
         frameborder="0">
 </iframe>
+
+
+This static dashboard displays the percentage of people who reported having trust and knowledge in science in each country. On the Plots page, there is a scatter plot showing the trust and knowledge levels. On the right side of the page, there are statistics showing the average knowledge, average trust, and the correlation between trust and knowledge. Finally, there are two tables to choose between that show the countries with the highest and lowest trust-to-knowledge ratios.
+
+The maps page has two maps to choose from, one for knowledge and one for trust. These show world maps that are colored by the knowledge or trust levels and the user and hover over the countries to see what their levels are. 

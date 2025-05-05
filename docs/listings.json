@@ -2,9 +2,9 @@
   {
     "listing": "/portfolio.html",
     "items": [
-      "/portfolio/Dynamic/index.html",
+      "/portfolio/Visualizations/index.html",
       "/portfolio/Static/index.html",
-      "/portfolio/Visualizations/index.html"
+      "/portfolio/Dynamic/index.html"
     ]
   }
 ]

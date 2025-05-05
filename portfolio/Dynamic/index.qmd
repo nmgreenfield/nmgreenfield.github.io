@@ -1,6 +1,7 @@
 ---
 title: "Quarto Dashboards (Dynamic)"
 description: "Dynamic dashboard visualizing each country's trust in science and knowledge of science."
+order: 3
 draft: false
 toc: false
 ---
@@ -12,3 +13,10 @@ toc: false
         height="800px"
         frameborder="0">
 </iframe>
+
+
+This dynamic dashboard displays the percentage of people who reported having trust and knowledge in science in each country. On the Plots page, there is a scatter plot showing the trust and knowledge levels. On the right side of the page, there are statistics showing the average knowledge, average trust, and the correlation between trust and knowledge. Finally, there are two tables to choose between that show the countries with the highest and lowest trust-to-knowledge ratios.
+
+On the left side, there is a sidebar that lets the user subset the data reported. There are check boxes that allow the user to select which regions they want to see in the graphics. There are also two sliders that allow the user to subset the data based on the range of the knowledge and trust levels. 
+
+The maps page has two maps to choose from, one for knowledge and one for trust. These show world maps that are colored by the knowledge or trust levels and the user and hover over the countries to see what their levels are. 

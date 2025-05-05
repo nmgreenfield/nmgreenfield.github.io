@@ -1,5 +1,100 @@
 ---
 title: "Advanced Visualizations"
-description: ""
+description: "Advanced visualization displaying each countries interest in science and action to learn more about science."
+order: 1
 draft: false
 ---
+
+```{r}
+#| include: false
+
+library(readxl)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(htmltools)
+library(scales)
+```
+
+```{r}
+#| include: false
+
+dat <- read_excel("wgm2018-dataset-crosstabs-all-countries.xlsx", sheet = "Full dataset")
+
+dictionary <- read_excel("wgm2018-dataset-crosstabs-all-countries.xlsx", sheet = "Data dictionary")
+```
+
+```{r}
+#| label: data cleaning
+#| include: false
+
+full_data <- dat %>%
+  select(WP5, Q8, Q6)
+
+countries <- str_split(dictionary$`Variable Type & Codes*`[1],
+                       pattern = ", ", simplify = T)
+
+countries <- as_tibble(matrix(countries, ncol = 1))
+
+countries <- countries %>%
+  separate_wider_delim(V1, delim = "=", names = c("code", "country")) %>%
+  mutate(code = as.double(code))
+
+full_data <- full_data %>%
+  left_join(countries, by = join_by(WP5 == code)) %>%
+  mutate(
+    know = case_when(
+    Q8 == 1 ~ "yes",
+    Q8 == 2 ~ "no",
+    Q8 == c(98,99) ~ NA
+  ),
+    sought = case_when(
+    Q6 == 1 ~ "yes",
+    Q6 == 2 ~ "no",
+    Q6 == c(98,99) ~ NA
+  )) %>%
+  select(country, know, sought) %>%
+  drop_na()
+
+
+final_data <- full_data %>%
+  group_by(country) %>%
+  summarise(percent_know = round(mean(know == "yes") * 100,2),
+            percent_sought = round(mean(sought == "yes") * 100,2))
+
+median_know <- median(final_data$percent_know)
+median_sought <- median(final_data$percent_sought)
+```
+
+```{r}
+#| label: third-improved-visualization
+#| echo: false
+#| warning: false
+
+final_data$hover_text <- paste0(
+  "Country: ", final_data$country, "<br>",
+  "Interest: ", percent_format(scale = 1, accuracy = 1)(final_data$percent_know), "<br>",
+  "Sought: ", percent_format(scale = 1, accuracy = 1)(final_data$percent_sought)
+)
+
+ggplotly(
+  ggplot(final_data, aes(x = percent_know, y = percent_sought)) +
+    geom_point(aes(text = hover_text), size=2, pch = 15, color = "blue") +
+    geom_vline(aes(xintercept = median_know), color = "black", linetype = "dashed") +
+    geom_hline(aes(yintercept = median_sought), color = "black", linetype = "dashed") +
+    scale_x_continuous(limits = c(30, 100), breaks = seq(30, 100, 5),
+                     labels = scales::percent_format(scale = 1)) +
+    scale_y_continuous(limits = c(0, 70), breaks = seq(0, 70, 5),
+                     labels = scales::percent_format(scale = 1)) +
+    labs(
+      title = "Interest in knowing more about science vs. Sought information about science",
+      x = "Interest",
+      y = "Sought"
+    ) +
+    theme_bw(),
+    tooltip = "text"
+  )
+```
+
+
+This visualization displays the percentage of people who reported having interest in science and having sought information in the last 30 days about science in each country. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the median values. 

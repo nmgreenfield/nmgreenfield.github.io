@@ -6,9 +6,7 @@ website:
   navbar:
     title: STAT 541 Portfolio
     right:
-      - href: index.qmd
-        text: Home
-      - portfolio.qmd
+      - href: portfolio.qmd
 
 format:
   html:
