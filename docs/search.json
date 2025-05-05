@@ -21,13 +21,6 @@
     "text": "This static dashboard displays the percentage of people who reported having trust and knowledge in science in each country. On the Plots page, there is a scatter plot showing the trust and knowledge levels. On the right side of the page, there are statistics showing the average knowledge, average trust, and the correlation between trust and knowledge. Finally, there are two tables to choose between that show the countries with the highest and lowest trust-to-knowledge ratios.\nThe maps page has two maps to choose from, one for knowledge and one for trust. These show world maps that are colored by the knowledge or trust levels and the user and hover over the countries to see what their levels are."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "portfolio/Dynamic/index.html",
     "href": "portfolio/Dynamic/index.html",
     "title": "Quarto Dashboards (Dynamic)",
