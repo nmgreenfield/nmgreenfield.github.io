@@ -17,8 +17,8 @@
     "objectID": "portfolio/Static/index.html#my-shiny-dashboard",
     "href": "portfolio/Static/index.html#my-shiny-dashboard",
     "title": "Quarto Dashboards (Static)",
-    "section": "",
-    "text": "This static dashboard displays the percentage of people who reported having trust and knowledge in science in each country. On the Plots page, there is a scatter plot showing the trust and knowledge levels. On the right side of the page, there are statistics showing the average knowledge, average trust, and the correlation between trust and knowledge. Finally, there are two tables to choose between that show the countries with the highest and lowest trust-to-knowledge ratios.\nThe maps page has two maps to choose from, one for knowledge and one for trust. These show world maps that are colored by the knowledge or trust levels and the user and hover over the countries to see what their levels are."
+    "section": "My Shiny Dashboard",
+    "text": "My Shiny Dashboard"
   },
   {
     "objectID": "portfolio/Dynamic/index.html",
@@ -31,8 +31,8 @@
     "objectID": "portfolio/Dynamic/index.html#my-shiny-dashboard",
     "href": "portfolio/Dynamic/index.html#my-shiny-dashboard",
     "title": "Quarto Dashboards (Dynamic)",
-    "section": "",
-    "text": "This dynamic dashboard displays the percentage of people who reported having trust and knowledge in science in each country. On the Plots page, there is a scatter plot showing the trust and knowledge levels. On the right side of the page, there are statistics showing the average knowledge, average trust, and the correlation between trust and knowledge. Finally, there are two tables to choose between that show the countries with the highest and lowest trust-to-knowledge ratios.\nOn the left side, there is a sidebar that lets the user subset the data reported. There are check boxes that allow the user to select which regions they want to see in the graphics. There are also two sliders that allow the user to subset the data based on the range of the knowledge and trust levels.\nThe maps page has two maps to choose from, one for knowledge and one for trust. These show world maps that are colored by the knowledge or trust levels and the user and hover over the countries to see what their levels are."
+    "section": "My Shiny Dashboard",
+    "text": "My Shiny Dashboard"
   },
   {
     "objectID": "portfolio/Visualizations/index.html",
