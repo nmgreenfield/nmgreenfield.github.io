@@ -66,7 +66,7 @@ median_know <- median(final_data$percent_know)
 median_sought <- median(final_data$percent_sought)
 ```
 
-This visualization displays the percentage of people who reported having interest in science and having sought information in the last 30 days about science in each country. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the median values. 
+This visualization displays the percentage of people who reported having interest in science and having sought information in the last 30 days about science in each country. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the median values.
 
 ```{r}
 #| label: third-improved-visualization
@@ -97,7 +97,6 @@ ggplotly(
     tooltip = "text"
   )
 ```
-
 
 This visualization displays the percentage of people who believe that vaccines are safe, broken down by region. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the region's median values.
 
@@ -162,6 +161,7 @@ region_medians <- final_data %>%
 ```{r}
 #| label: new-and-improved-visualization
 #| warning: false
+#| echo: false
 
 plot_data <- final_data %>%
   left_join(region_medians, by = "region")
