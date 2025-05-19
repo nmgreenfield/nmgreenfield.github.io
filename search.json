@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "Advanced Visualizations\n\n\nAdvanced visualization displaying each countries interest in science and action to learn more about science.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Static)\n\n\nStatic dashboard visualizing each country’s trust in science and knowledge of science.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Dynamic)\n\n\nDynamic dashboard visualizing each country’s trust in science and knowledge of science.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWriting Effecient Functions\n\n\nFunctions used for fitting a model while removing outliers and imputing data.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJSON Data & APIs\n\n\nPulling JSON data on the ISS from an API.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWebscraping\n\n\nWebscraping information about cheese.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGenerative Art\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/Static/index.html",
+    "href": "portfolio/Static/index.html",
+    "title": "Quarto Dashboards (Static)",
+    "section": "",
+    "text": "This static dashboard displays the percentage of people who reported having trust and knowledge in science in each country. On the Plots page, there is a scatter plot showing the trust and knowledge levels. On the right side of the page, there are statistics showing the average knowledge, average trust, and the correlation between trust and knowledge. Finally, there are two tables to choose between that show the countries with the highest and lowest trust-to-knowledge ratios.\nThe maps page has two maps to choose from, one for knowledge and one for trust. These show world maps that are colored by the knowledge or trust levels and the user and hover over the countries to see what their levels are."
+  },
+  {
+    "objectID": "portfolio/Static/index.html#my-shiny-dashboard",
+    "href": "portfolio/Static/index.html#my-shiny-dashboard",
+    "title": "Quarto Dashboards (Static)",
+    "section": "My Shiny Dashboard",
+    "text": "My Shiny Dashboard"
+  },
+  {
+    "objectID": "portfolio/Dynamic/index.html",
+    "href": "portfolio/Dynamic/index.html",
+    "title": "Quarto Dashboards (Dynamic)",
+    "section": "",
+    "text": "This dynamic dashboard displays the percentage of people who reported having trust and knowledge in science in each country. On the Plots page, there is a scatter plot showing the trust and knowledge levels. On the right side of the page, there are statistics showing the average knowledge, average trust, and the correlation between trust and knowledge. Finally, there are two tables to choose between that show the countries with the highest and lowest trust-to-knowledge ratios.\nOn the left side, there is a sidebar that lets the user subset the data reported. There are check boxes that allow the user to select which regions they want to see in the graphics. There are also two sliders that allow the user to subset the data based on the range of the knowledge and trust levels.\nThe maps page has two maps to choose from, one for knowledge and one for trust. These show world maps that are colored by the knowledge or trust levels and the user and hover over the countries to see what their levels are."
+  },
+  {
+    "objectID": "portfolio/Dynamic/index.html#my-shiny-dashboard",
+    "href": "portfolio/Dynamic/index.html#my-shiny-dashboard",
+    "title": "Quarto Dashboards (Dynamic)",
+    "section": "My Shiny Dashboard",
+    "text": "My Shiny Dashboard"
+  },
+  {
+    "objectID": "portfolio/Visualizations/index.html",
+    "href": "portfolio/Visualizations/index.html",
+    "title": "Advanced Visualizations",
+    "section": "",
+    "text": "This visualization displays the percentage of people who reported having interest in science and having sought information in the last 30 days about science in each country. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the median values.\n\n\n\n\n\n\nThis visualization displays the percentage of people who believe that vaccines are safe, broken down by region. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the region’s median values."
+  },
+  {
+    "objectID": "portfolio/Writing Efficient Functions/index.html",
+    "href": "portfolio/Writing Efficient Functions/index.html",
+    "title": "Writing Effecient Functions",
+    "section": "",
+    "text": "Remove Outliers\nThis function takes in a data set, variables, and a standard deviation threshold and removes the outliers from the specified variables. The default standard deviation threshold is set at 3. The function has a built in warning if a categorical variable is input and a stop if no numeric variables are input. The final output of the function is a data set with the rows with outliers removed.\n\nremove_outliers &lt;- function(data, ..., sd_thresh = 3){\n  \n  # grabs variables in ... and converts to character\n  vars &lt;- quos(...)  #variables in ...\n  var_names &lt;- sapply(vars, as_name) #converts vars to character\n\n  # finds any non-numeric vars and gives warning message\n  non_numeric_vars &lt;- var_names[!sapply(data[var_names], is.numeric)]\n  \n  if (length(non_numeric_vars) &gt; 0) {\n    warning(\"The following variables are categorical and will be ignored: \", \n            paste(non_numeric_vars, collapse = \", \"))\n  }\n\n  # finds numeric vars and only keeps rows that aren't outliers\n  numeric_vars &lt;- var_names[sapply(data[var_names], is.numeric)]\n\n  if (length(numeric_vars) == 0) {\n    stop(\"No numeric variables provided for outlier detection.\")\n  }\n\n  z_scores &lt;- data %&gt;%\n    select(all_of(numeric_vars)) %&gt;%\n    mutate(across(everything(), scale))\n\n  keep_rows &lt;- apply(abs(z_scores), 1, function(row) all(row &lt; sd_thresh))\n\n  # return final data set\n  return(data[keep_rows, ])\n}\n\n\n\nImpute Missing\nThis function takes in a data set, variables, and an imputation function and imputes missing values from the specified variables. The default imputation function is using the mean. The function has a built in warning if a categorical variable is input. The final output of the function is a data set with missing numeric values imputed.\n\nimpute_missing &lt;- function(data, ..., impute_fun = mean){\n  \n  # grabs variables in ... and converts to character\n  vars &lt;- enquos(...) #variables in ...\n  var_names &lt;- sapply(vars, as_name) #converts vars to character\n  \n  impute_fun &lt;- match.fun(impute_fun) #function from impute_fun\n\n  # finds any non-numeric vars and gives warning message\n  non_numeric_vars &lt;- var_names[!sapply(data[, var_names], is.numeric)]\n  \n  if (length(non_numeric_vars) &gt; 0) {\n    warning(\"The following variables are not numeric and will be skipped: \", \n            paste(non_numeric_vars, collapse = \", \"))\n  }\n  \n  # Apply imputation only to numeric columns\n  data %&gt;%\n    mutate(across(\n      all_of(var_names),\n      ~ if (is.numeric(.)) {replace_na(., impute_fun(., na.rm = TRUE))} else {.}\n    ))\n}\n\n\n\nFit Model\nFinally, this function takes in a data set, model formula, set of variables, a true or false for removing outliers and imputing, an imputation function, and a standard deviation threshold, and fits a linear regression model. The function first calls the previous two functions to remove outliers or impute if either of those are set to true. Once the data is cleaned, the function fits and returns the linear regression model.\n\nfit_model &lt;- function(data, mod_formula, ...,\n                      remove_outliers = FALSE, impute_missing = FALSE,\n                      impute_fun = mean, sd_thresh = 3) {\n  \n  vars &lt;- enquos(...) #variables in ...\n  \n  # Remove outliers\n  if (remove_outliers) {\n    data &lt;- remove_outliers(data, !!!vars, sd_thresh = sd_thresh)\n  }\n\n  # Impute\n  if (impute_missing) {\n    data &lt;- impute_missing(data, !!!vars, impute_fun = impute_fun)\n  }\n\n  # Fit model\n  model &lt;- lm(mod_formula, data = data)\n  return(model)\n}"
+  }
+]

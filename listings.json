@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/portfolio.html",
+    "items": [
+      "/portfolio/Visualizations/index.html",
+      "/portfolio/Static/index.html",
+      "/portfolio/Dynamic/index.html",
+      "/portfolio/Writing Efficient Functions/index.html",
+      "/portfolio/JSON Data & APIs/index.html",
+      "/portfolio/Webscraping/index.html",
+      "/portfolio/Generative Art/index.html"
+    ]
+  }
+]
