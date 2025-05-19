@@ -1,0 +1,8 @@
+---
+title: "Writing Effecient Functions"
+description: "Functions used for fitting a model while removing outliers and imputing data."
+order: 4
+draft: false
+toc: false
+---
+

@@ -66,6 +66,8 @@ median_know <- median(final_data$percent_know)
 median_sought <- median(final_data$percent_sought)
 ```
 
+This visualization displays the percentage of people who reported having interest in science and having sought information in the last 30 days about science in each country. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the median values. 
+
 ```{r}
 #| label: third-improved-visualization
 #| echo: false
@@ -97,4 +99,92 @@ ggplotly(
 ```
 
 
-This visualization displays the percentage of people who reported having interest in science and having sought information in the last 30 days about science in each country. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the median values. 
+This visualization displays the percentage of people who believe that vaccines are safe, broken down by region. The user can hover over points in the plot to view the values and the country name. The dotted lines on the graph are the region's median values.
+
+```{r}
+#| label: data cleaning 1
+#| echo: false
+#| warning: false
+
+full_data <- dat %>%
+  select(WP5, Q25, Regions_Report)
+
+countries <- str_split(dictionary$`Variable Type & Codes*`[1],
+                       pattern = ", ", simplify = T)
+
+countries <- as_tibble(matrix(countries, ncol = 1))
+
+countries <- countries %>%
+  separate_wider_delim(V1, delim = "=", names = c("code", "country")) %>%
+  mutate(code = as.double(code))
+
+regions <- str_split(dictionary$`Variable Type & Codes*`[57],
+                       pattern = ",", simplify = T)
+
+regions <- as_tibble(matrix(regions, ncol = 1)) %>%
+  filter(V1 != "")
+
+regions <- regions %>%
+  separate_wider_delim(V1, delim = "=", names = c("code", "region")) %>%
+  mutate(code = as.double(code))
+
+full_data <- full_data %>%
+  left_join(countries, by = join_by(WP5 == code)) %>%
+  left_join(regions, by = join_by(Regions_Report == code)) %>%
+  mutate(vaccine = case_when(
+    Q25 %in% c(1,2) ~ "agree",
+    Q25 %in% c(3,4,5) ~ "not agree",
+    Q25 == 99 ~ NA
+  ),
+  region = case_when(
+    region %in% c("Aus/NZ","Central Asia","East Asia","South Asia","Southeast Asia") ~ "Asia",
+    region %in% c("Middle East","North Africa") ~ "Middle East and North Africa",
+    region %in% c("Central Africa","Eastern Africa","Southern Africa","Western Africa") ~ "Sub-Saharan Africa",
+    region %in% c("Central America and Mexico","Northern America","South America") ~ "Americas",
+    region %in% c("Northern Europe","Southern Europe","Western Europe") ~ "Europe",
+    region %in% c("Eastern Europe") ~ "Former Soviet Union",
+    region %in% c("Not assigned") ~ NA
+  )) %>%
+  select(country, region, vaccine) %>%
+  drop_na()
+
+
+final_data <- full_data %>%
+  group_by(country) %>%
+  summarise(percent_agree = mean(vaccine == "agree") * 100,
+            region = first(region))
+
+region_medians <- final_data %>%
+  group_by(region) %>%
+  summarise(median_agree = median(percent_agree), .groups = 'drop')
+```
+
+```{r}
+#| label: new-and-improved-visualization
+#| warning: false
+
+plot_data <- final_data %>%
+  left_join(region_medians, by = "region")
+
+ggplotly(
+  ggplot(plot_data, aes(x = percent_agree, y = fct_reorder(country, percent_agree))) +
+    geom_point(aes(color = region, text = paste0(country, ": ", round(percent_agree, 1), "%")), size = 1.5) +
+    geom_vline(aes(xintercept = median_agree), color = "black", linetype = "dashed") +
+    facet_wrap(~region, scales = "free_y") +
+    scale_x_continuous(limits = c(30, 100), breaks = seq(30, 100, 10)) +
+    labs(
+      title = "% of people who believe vaccines are safe, by country and global region",
+      x = "",
+      y = NULL,
+      color = "Region"
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      axis.text.y = element_blank(),
+      panel.grid.major.y = element_blank(),
+      legend.position = "none",
+      strip.text = element_text(face = "bold")
+    ),
+  tooltip = "text"
+)
+```
