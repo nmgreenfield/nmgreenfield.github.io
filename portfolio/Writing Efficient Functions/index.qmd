@@ -6,6 +6,8 @@ draft: false
 toc: false
 ---
 
+### Remove Outliers
+
 This function takes in a data set, variables, and a standard deviation threshold and removes the outliers from the specified variables. The default standard deviation threshold is set at 3. The function has a built in warning if a categorical variable is input and a stop if no numeric variables are input. The final output of the function is a data set with the rows with outliers removed. 
 
 ```{r}
@@ -45,6 +47,8 @@ remove_outliers <- function(data, ..., sd_thresh = 3){
 
 ```
 
+### Impute Missing
+
 This function takes in a data set, variables, and an imputation function and imputes missing values from the specified variables. The default imputation function is using the mean. The function has a built in warning if a categorical variable is input. The final output of the function is a data set with missing numeric values imputed. 
 
 ```{r}
@@ -74,6 +78,8 @@ impute_missing <- function(data, ..., impute_fun = mean){
     ))
 }
 ```
+
+### Fit Model
 
 Finally, this function takes in a data set, model formula, set of variables, a true or false for removing outliers and imputing, an imputation function, and a standard deviation threshold, and fits a linear regression model. The function first calls the previous two functions to remove outliers or impute if either of those are set to true. Once the data is cleaned, the function fits and returns the linear regression model. 
 

@@ -167,6 +167,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<section id="remove-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="remove-outliers">Remove Outliers</h3>
 <p>This function takes in a data set, variables, and a standard deviation threshold and removes the outliers from the specified variables. The default standard deviation threshold is set at 3. The function has a built in warning if a categorical variable is input and a stop if no numeric variables are input. The final output of the function is a data set with the rows with outliers removed.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remove_outliers <span class="ot">&lt;-</span> <span class="cf">function</span>(data, ..., <span class="at">sd_thresh =</span> <span class="dv">3</span>){</span>
@@ -200,6 +202,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data[keep_rows, ])</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="impute-missing" class="level3">
+<h3 class="anchored" data-anchor-id="impute-missing">Impute Missing</h3>
 <p>This function takes in a data set, variables, and an imputation function and imputes missing values from the specified variables. The default imputation function is using the mean. The function has a built in warning if a categorical variable is input. The final output of the function is a data set with missing numeric values imputed.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>impute_missing <span class="ot">&lt;-</span> <span class="cf">function</span>(data, ..., <span class="at">impute_fun =</span> mean){</span>
@@ -226,6 +231,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    ))</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="fit-model" class="level3">
+<h3 class="anchored" data-anchor-id="fit-model">Fit Model</h3>
 <p>Finally, this function takes in a data set, model formula, set of variables, a true or false for removing outliers and imputing, an imputation function, and a standard deviation threshold, and fits a linear regression model. The function first calls the previous two functions to remove outliers or impute if either of those are set to true. Once the data is cleaned, the function fits and returns the linear regression model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mod_formula, ...,</span>
@@ -251,6 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
