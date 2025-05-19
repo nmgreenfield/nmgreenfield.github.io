@@ -5,3 +5,100 @@ order: 4
 draft: false
 toc: false
 ---
+
+This function takes in a data set, variables, and a standard deviation threshold and removes the outliers from the specified variables. The default standard deviation threshold is set at 3. The function has a built in warning if a categorical variable is input and a stop if no numeric variables are input. The final output of the function is a data set with the rows with outliers removed. 
+
+```{r}
+#| label: remove outliers
+
+remove_outliers <- function(data, ..., sd_thresh = 3){
+  
+  # grabs variables in ... and converts to character
+  vars <- quos(...)  #variables in ...
+  var_names <- sapply(vars, as_name) #converts vars to character
+
+  # finds any non-numeric vars and gives warning message
+  non_numeric_vars <- var_names[!sapply(data[var_names], is.numeric)]
+  
+  if (length(non_numeric_vars) > 0) {
+    warning("The following variables are categorical and will be ignored: ", 
+            paste(non_numeric_vars, collapse = ", "))
+  }
+
+  # finds numeric vars and only keeps rows that aren't outliers
+  numeric_vars <- var_names[sapply(data[var_names], is.numeric)]
+
+  if (length(numeric_vars) == 0) {
+    stop("No numeric variables provided for outlier detection.")
+  }
+
+  z_scores <- data %>%
+    select(all_of(numeric_vars)) %>%
+    mutate(across(everything(), scale))
+
+  keep_rows <- apply(abs(z_scores), 1, function(row) all(row < sd_thresh))
+
+  # return final data set
+  return(data[keep_rows, ])
+}
+
+
+```
+
+This function takes in a data set, variables, and an imputation function and imputes missing values from the specified variables. The default imputation function is using the mean. The function has a built in warning if a categorical variable is input. The final output of the function is a data set with missing numeric values imputed. 
+
+```{r}
+#| label: impute missing
+
+impute_missing <- function(data, ..., impute_fun = mean){
+  
+  # grabs variables in ... and converts to character
+  vars <- enquos(...) #variables in ...
+  var_names <- sapply(vars, as_name) #converts vars to character
+  
+  impute_fun <- match.fun(impute_fun) #function from impute_fun
+
+  # finds any non-numeric vars and gives warning message
+  non_numeric_vars <- var_names[!sapply(data[, var_names], is.numeric)]
+  
+  if (length(non_numeric_vars) > 0) {
+    warning("The following variables are not numeric and will be skipped: ", 
+            paste(non_numeric_vars, collapse = ", "))
+  }
+  
+  # Apply imputation only to numeric columns
+  data %>%
+    mutate(across(
+      all_of(var_names),
+      ~ if (is.numeric(.)) {replace_na(., impute_fun(., na.rm = TRUE))} else {.}
+    ))
+}
+```
+
+Finally, this function takes in a data set, model formula, set of variables, a true or false for removing outliers and imputing, an imputation function, and a standard deviation threshold, and fits a linear regression model. The function first calls the previous two functions to remove outliers or impute if either of those are set to true. Once the data is cleaned, the function fits and returns the linear regression model. 
+
+```{r}
+#| label: model fitting
+
+fit_model <- function(data, mod_formula, ...,
+                      remove_outliers = FALSE, impute_missing = FALSE,
+                      impute_fun = mean, sd_thresh = 3) {
+  
+  vars <- enquos(...) #variables in ...
+  
+  # Remove outliers
+  if (remove_outliers) {
+    data <- remove_outliers(data, !!!vars, sd_thresh = sd_thresh)
+  }
+
+  # Impute
+  if (impute_missing) {
+    data <- impute_missing(data, !!!vars, impute_fun = impute_fun)
+  }
+
+  # Fit model
+  model <- lm(mod_formula, data = data)
+  return(model)
+}
+
+```
