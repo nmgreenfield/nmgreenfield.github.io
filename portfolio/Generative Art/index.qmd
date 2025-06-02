@@ -1,6 +1,6 @@
 ---
 title: "Generative Art"
-description: ""
+description: "Generative art created in R."
 order: 7
 draft: false
 toc: false
