@@ -63,6 +63,13 @@
     "text": "My Shiny Dashboard"
   },
   {
+    "objectID": "portfolio/JSON Data & APIs/index.html",
+    "href": "portfolio/JSON Data & APIs/index.html",
+    "title": "JSON Data & APIs",
+    "section": "",
+    "text": "This function is used to pull the times the ISS passes a set lat/long in the next 72 hours. The function is used to pull the times for all US state capitals.\n\nget_city_info &lt;- function(lat, long) {\n  url &lt;- paste0(\"https://api.g7vrd.co.uk/v1/satellite-passes/25544/\",\n                lat, \"/\", long, \".json?hours=72\") # pulls by lat long, time set for 72 hours\n  \n  res &lt;- try(GET(url), silent = TRUE)\n  content &lt;- content(res, \"text\", encoding = \"UTF-8\")\n  json_data &lt;- fromJSON(content, flatten = TRUE)\n  return(json_data)\n}\n\nThe plot below shows the location for all US state capitals. If you hover over the spaceship logo, it will show the next time the ISS passes that location. If you click on the logo, it will show the times for the next 3 passes. Finally, the plot has lines connecting the capitals showing the chronological order of the next passes."
+  },
+  {
     "objectID": "portfolio/Visualizations/index.html",
     "href": "portfolio/Visualizations/index.html",
     "title": "Advanced Visualizations",

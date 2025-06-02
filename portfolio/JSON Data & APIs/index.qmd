@@ -6,3 +6,146 @@ draft: false
 toc: false
 ---
 
+```{r}
+#| include: false
+
+library(tidyverse)
+library(rlang)
+library(purrr)
+library(httr)
+library(jsonlite)
+library(leaflet)
+```
+
+```{r}
+#| label: read and merge data
+#| include: false
+
+latlong <- read.table("data/latlong.txt", quote="\"", comment.char="")
+names(latlong) <- c("abrv", "lat", "long")
+latlong <- latlong %>%
+  filter(abrv != "US")
+
+city_names <- read.table("data/names.txt", quote="\"", comment.char="")
+names(city_names) <- c("abrv", "city")
+city_names <- city_names %>%
+  filter(abrv != "US")
+
+cities <- merge(city_names, latlong) %>%
+  select(city, lat, long)
+```
+
+This function is used to pull the times the ISS passes a set lat/long in the next 72 hours. The function is used to pull the times for all US state capitals.
+
+```{r}
+#| label: API function
+
+get_city_info <- function(lat, long) {
+  url <- paste0("https://api.g7vrd.co.uk/v1/satellite-passes/25544/",
+                lat, "/", long, ".json?hours=72") # pulls by lat long, time set for 72 hours
+  
+  res <- try(GET(url), silent = TRUE)
+  content <- content(res, "text", encoding = "UTF-8")
+  json_data <- fromJSON(content, flatten = TRUE)
+  return(json_data)
+}
+```
+
+```{r}
+#| label: API pull
+#| include: false
+
+city_info <- cities %>%
+  mutate(info = pmap(list(lat, long), get_city_info))
+```
+
+
+```{r}
+#| label: clean data
+#| include: false
+
+city_info <- city_info %>%
+  mutate(passes = map(info, "passes"))
+
+city_info_new <- city_info %>%
+  mutate(passes = map(passes, function(x) {
+    if (is.data.frame(x)) return(list(x)) # put data frame in list
+    else if (is.list(x)) return(x) # return if already a list
+  }))
+
+final_df <- city_info_new %>%
+  select(city, lat, long, passes) %>%
+  unnest(passes, keep_empty = TRUE)
+
+
+final_df <- final_df %>% # get first 3 passes for each city
+  mutate(passes = map(passes, ~ {
+    if (is.data.frame(.x) && nrow(.x) > 0) {
+      slice(.x, 1:3) %>% select(start)
+    } else {
+      tibble(start = NA)
+    }
+  }))
+
+flattened_df <- final_df %>% # one row per pass
+  unnest(passes) %>%
+  mutate(start = as.POSIXct(start, format = "%Y-%m-%dT%H:%M:%OSZ", tz = "UTC")) %>%
+  rename(time = start)
+
+```
+
+```{r}
+#| label: plot info
+#| include: false
+
+#popup info
+popup_data <- flattened_df %>%
+  group_by(city, lat, long) %>%
+  summarise(
+    soonest = if (all(is.na(time))) "No upcoming passes" 
+              else format(min(time, na.rm = TRUE), "%B %d, %Y %I:%M %p UTC"),
+    
+    all_passes = if (all(is.na(time))) "No upcoming passes"
+                 else paste(format(time, "%B %d, %Y %I:%M %p UTC"), collapse = "<br>"),
+    
+    .groups = "drop"
+  )
+
+#line info
+ordered_cities <- flattened_df %>%
+  filter(!is.na(time)) %>%
+  group_by(city, lat, long) %>%
+  summarise(soonest_time = min(time), .groups = "drop") %>%
+  arrange(soonest_time)
+```
+
+The plot below shows the location for all US state capitals. If you hover over the spaceship logo, it will show the next time the ISS passes that location. If you click on the logo, it will show the times for the next 3 passes. Finally, the plot has lines connecting the capitals showing the chronological order of the next passes. 
+
+```{r}
+#| label: plot
+#| echo: false
+
+leaflet(popup_data) %>%
+  addTiles() %>%
+  addMarkers(
+    lng = ~long,
+    lat = ~lat,
+    label = ~paste0(city, ": ", soonest),  # Hover info
+    popup = ~paste0(
+      "<strong>", city, "</strong><br>",
+      "Upcoming ISS Passes:<br>",
+      all_passes
+    ),
+    icon = makeIcon(
+      iconUrl = "logo/rocket.svg",
+      iconWidth = 15, iconHeight = 15)
+  ) %>%
+  addPolylines(
+    lng = ordered_cities$long,
+    lat = ordered_cities$lat,
+    color = "blue",
+    weight = 1,
+    opacity = 0.8,
+    label = "ISS Pass Order"
+  )
+```
