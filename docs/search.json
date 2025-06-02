@@ -21,6 +21,27 @@
     "text": "My Shiny Dashboard"
   },
   {
+    "objectID": "portfolio/Generative Art/index.html",
+    "href": "portfolio/Generative Art/index.html",
+    "title": "Generative Art",
+    "section": "",
+    "text": "polar_art_dual(\n  seed = 1,\n  n = 400,\n  palette_top = c(\"red\", \"black\", \"white\"),\n  palette_bottom = c(\"antiquewhite\", \"orange\", \"bisque\")\n)\n\n\n\n\n\n\n\n\nIn Fragmented Orbit, the artist explores the delicate tension between order and disarray. Using programmatic motion and layered forms, the piece traces the outline of a circle—traditionally a symbol of unity—only to disrupt it with sharp, scattered bars of warm and dark tones. The interplay of deep maroons and bright amber suggests an atmospheric transition, like a sunrise through fractured glass. It evokes a moment caught between movement and stillness, precision and spontaneity—a quiet chaos rendered in digital form."
+  },
+  {
+    "objectID": "portfolio/Generative Art/index.html#function-for-fragmented-orbit",
+    "href": "portfolio/Generative Art/index.html#function-for-fragmented-orbit",
+    "title": "Generative Art",
+    "section": "Function for Fragmented Orbit",
+    "text": "Function for Fragmented Orbit\n\npolar_art_dual &lt;- function(seed, n, palette_top, palette_bottom) {\n  set.seed(seed)\n  \n  #data generation\n  dat &lt;- tibble(\n    x0 = runif(n, 0, 360), #start angle\n    y0 = abs(rnorm(n, 1, 0.3)), #start radius\n    x1 = x0 + runif(n, -10, 10), #end angle\n    y1 = y0 + rnorm(n, 0, 0.3), #end radius\n    shade = rnorm(n),\n    size = abs(rnorm(n, 1, 0.5))\n  ) %&gt;%\n    mutate( # keep angles between 0 and 360\n      x0 = x0 %% 360,\n      x1 = x1 %% 360,\n      group = if_else( # Define top as angles between 270-360 or 0-90 degrees\n        (x0 &gt;= 270 | x0 &lt;= 90), \"top\", \"bottom\"\n      )\n    )\n  \n  # break up data to top and bottom\n  dat_top &lt;- dat %&gt;% filter(group == \"top\")\n  dat_bottom &lt;- dat %&gt;% filter(group == \"bottom\")\n  \n  #plot\n  ggplot() +\n    \n    #top data\n    geom_segment(\n      data = dat_top,\n      aes(x = x0, y = y0, xend = x1, yend = y1, colour = shade, linewidth = size),\n      show.legend = FALSE\n    ) +\n    scale_colour_gradientn(colours = palette_top) +\n    ggnewscale::new_scale_color() +\n    \n    #bottom data\n    geom_segment(\n      data = dat_bottom,\n      aes(x = x0, y = y0, xend = x1, yend = y1, colour = shade, linewidth = size),\n      show.legend = FALSE\n    ) +\n    scale_colour_gradientn(colours = palette_bottom) +\n    \n    coord_polar(start = 0) +\n    scale_x_continuous(limits = c(0, 360), expand = c(0, 0)) +\n    scale_y_continuous(expand = c(0, 0)) +\n    scale_size(range = c(0, 5)) +\n    theme_void()\n}"
+  },
+  {
+    "objectID": "portfolio/Generative Art/index.html#functions-for-viscous-drift",
+    "href": "portfolio/Generative Art/index.html#functions-for-viscous-drift",
+    "title": "Generative Art",
+    "section": "Functions for Viscous Drift",
+    "text": "Functions for Viscous Drift\n\n# Random palette - returns hex values\nsample_lava_palette &lt;- function(n = 256) {\n  hues &lt;- sort(runif(n))\n  sats &lt;- runif(n, 0.7, 1) #saturation\n  vals &lt;- runif(n, 0.8, 1) #brightness\n  hsv(hues, sats, vals)\n}\n\n# Single frame generator with time offset\nlava_frame &lt;- function(frame, pixels = 400, speed = 100, freq = 3) {\n  z_offset &lt;- frame / speed  # change speed of animation - divide by larger # to slow\n  \n  # create grid of pixels\n  grid &lt;- long_grid(\n    x = seq(0, 1, length.out = pixels),\n    y = seq(0, 1, length.out = pixels)\n  ) |&gt;\n    mutate(\n      paint = fracture(\n        x = x,\n        y = y,\n        z = z_offset,\n        noise = gen_simplex, # simplex noise generator to look like lava lamp\n        fractal = fbm, # fractal Brownian motion\n        octaves = 1, # can't notice changes when adjusting\n        frequency = freq # changes number of blobs, want to keep low\n      ),\n      paint = normalise(paint)\n    ) |&gt;\n    as.array(value = paint)\n  \n  # generates color palette\n  lava_palette &lt;- sample_lava_palette(256)\n  \n  # apply shading\n  img &lt;- height_shade(grid, texture = lava_palette)\n  \n  image_read(img)\n}\n\n#gif function\nmake_lava_gif &lt;- function(frames = 40, fps = 1, speed = 100, freq = 3) {\n  \n  # check that fps is a factor of 100 (needed for function)\n  if (100 %% fps != 0){\n    stop(\"fps must be a factor of 100\")\n  }\n  \n  # animates frames\n  images &lt;- map(1:frames, ~ lava_frame(.x, speed = speed, freq = freq))\n  animation &lt;- image_animate(image_join(images), fps = fps)\n  \n  return(animation)\n}"
+  },
+  {
     "objectID": "portfolio/Dynamic/index.html",
     "href": "portfolio/Dynamic/index.html",
     "title": "Quarto Dashboards (Dynamic)",

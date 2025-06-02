@@ -5,3 +5,268 @@ order: 7
 draft: false
 toc: false
 ---
+
+```{r}
+#| label: packages
+#| include: false
+
+library(tidyverse)
+library(ggplot2)
+library(tibble)
+library(ggnewscale)
+library(rayshader)
+library(ambient)
+library(ggthemes)
+library(grDevices)
+library(magick)
+```
+
+```{r}
+#| include: false
+
+
+polar_art_dual <- function(seed, n, palette_top, palette_bottom) {
+  set.seed(seed)
+  
+  #data generation
+  dat <- tibble(
+    x0 = runif(n, 0, 360), #start angle
+    y0 = abs(rnorm(n, 1, 0.3)), #start radius
+    x1 = x0 + runif(n, -10, 10), #end angle
+    y1 = y0 + rnorm(n, 0, 0.3), #end radius
+    shade = rnorm(n),
+    size = abs(rnorm(n, 1, 0.5))
+  ) %>%
+    mutate( # keep angles between 0 and 360
+      x0 = x0 %% 360,
+      x1 = x1 %% 360,
+      group = if_else( # Define top as angles between 270-360 or 0-90 degrees
+        (x0 >= 270 | x0 <= 90), "top", "bottom"
+      )
+    )
+  
+  # break up data to top and bottom
+  dat_top <- dat %>% filter(group == "top")
+  dat_bottom <- dat %>% filter(group == "bottom")
+  
+  #plot
+  ggplot() +
+    
+    #top data
+    geom_segment(
+      data = dat_top,
+      aes(x = x0, y = y0, xend = x1, yend = y1, colour = shade, linewidth = size),
+      show.legend = FALSE
+    ) +
+    scale_colour_gradientn(colours = palette_top) +
+    ggnewscale::new_scale_color() +
+    
+    #bottom data
+    geom_segment(
+      data = dat_bottom,
+      aes(x = x0, y = y0, xend = x1, yend = y1, colour = shade, linewidth = size),
+      show.legend = FALSE
+    ) +
+    scale_colour_gradientn(colours = palette_bottom) +
+    
+    coord_polar(start = 0) +
+    scale_x_continuous(limits = c(0, 360), expand = c(0, 0)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_size(range = c(0, 5)) +
+    theme_void()
+}
+
+# Random palette - returns hex values
+sample_lava_palette <- function(n = 256) {
+  hues <- sort(runif(n))
+  sats <- runif(n, 0.7, 1) #saturation
+  vals <- runif(n, 0.8, 1) #brightness
+  hsv(hues, sats, vals)
+}
+
+# Single frame generator with time offset
+lava_frame <- function(frame, pixels = 400, speed = 100, freq = 3) {
+  z_offset <- frame / speed  # change speed of animation - divide by larger # to slow
+  
+  # create grid of pixels
+  grid <- long_grid(
+    x = seq(0, 1, length.out = pixels),
+    y = seq(0, 1, length.out = pixels)
+  ) |>
+    mutate(
+      paint = fracture(
+        x = x,
+        y = y,
+        z = z_offset,
+        noise = gen_simplex, # simplex noise generator to look like lava lamp
+        fractal = fbm, # fractal Brownian motion
+        octaves = 1, # can't notice changes when adjusting
+        frequency = freq # changes number of blobs, want to keep low
+      ),
+      paint = normalise(paint)
+    ) |>
+    as.array(value = paint)
+  
+  # generates color palette
+  lava_palette <- sample_lava_palette(256)
+  
+  # apply shading
+  img <- height_shade(grid, texture = lava_palette)
+  
+  image_read(img)
+}
+
+#gif function
+make_lava_gif <- function(frames = 40, fps = 1, speed = 100, freq = 3) {
+  
+  # check that fps is a factor of 100 (needed for function)
+  if (100 %% fps != 0){
+    stop("fps must be a factor of 100")
+  }
+  
+  # animates frames
+  images <- map(1:frames, ~ lava_frame(.x, speed = speed, freq = freq))
+  animation <- image_animate(image_join(images), fps = fps)
+  
+  return(animation)
+}
+```
+
+# *Fragmented Orbit*
+
+```{r}
+polar_art_dual(
+  seed = 1,
+  n = 400,
+  palette_top = c("red", "black", "white"),
+  palette_bottom = c("antiquewhite", "orange", "bisque")
+)
+
+```
+
+In Fragmented Orbit, the artist explores the delicate tension between order and disarray. Using programmatic motion and layered forms, the piece traces the outline of a circle—traditionally a symbol of unity—only to disrupt it with sharp, scattered bars of warm and dark tones. The interplay of deep maroons and bright amber suggests an atmospheric transition, like a sunrise through fractured glass. It evokes a moment caught between movement and stillness, precision and spontaneity—a quiet chaos rendered in digital form.
+
+# *Viscous Drift*
+
+```{r}
+gif_animation <- make_lava_gif()
+gif_animation
+```
+
+Viscous Drift simulates the hypnotic undulations of a lava lamp—an homage to the liquid logic of motion and color. This work doesn’t just depict fluidity; it breathes it. Concentric waves of saturated hues ripple across the canvas, colliding and melting into each other with a dreamlike softness. There's no fixed center, no clear beginning—just a perpetual unfolding. The color palette, both synthetic and organic, pulls the viewer into a trance of perpetual transformation, evoking the slow-motion chaos of something alive yet utterly abstract.
+
+# Appendix
+
+## Function for *Fragmented Orbit*
+
+```{r}
+polar_art_dual <- function(seed, n, palette_top, palette_bottom) {
+  set.seed(seed)
+  
+  #data generation
+  dat <- tibble(
+    x0 = runif(n, 0, 360), #start angle
+    y0 = abs(rnorm(n, 1, 0.3)), #start radius
+    x1 = x0 + runif(n, -10, 10), #end angle
+    y1 = y0 + rnorm(n, 0, 0.3), #end radius
+    shade = rnorm(n),
+    size = abs(rnorm(n, 1, 0.5))
+  ) %>%
+    mutate( # keep angles between 0 and 360
+      x0 = x0 %% 360,
+      x1 = x1 %% 360,
+      group = if_else( # Define top as angles between 270-360 or 0-90 degrees
+        (x0 >= 270 | x0 <= 90), "top", "bottom"
+      )
+    )
+  
+  # break up data to top and bottom
+  dat_top <- dat %>% filter(group == "top")
+  dat_bottom <- dat %>% filter(group == "bottom")
+  
+  #plot
+  ggplot() +
+    
+    #top data
+    geom_segment(
+      data = dat_top,
+      aes(x = x0, y = y0, xend = x1, yend = y1, colour = shade, linewidth = size),
+      show.legend = FALSE
+    ) +
+    scale_colour_gradientn(colours = palette_top) +
+    ggnewscale::new_scale_color() +
+    
+    #bottom data
+    geom_segment(
+      data = dat_bottom,
+      aes(x = x0, y = y0, xend = x1, yend = y1, colour = shade, linewidth = size),
+      show.legend = FALSE
+    ) +
+    scale_colour_gradientn(colours = palette_bottom) +
+    
+    coord_polar(start = 0) +
+    scale_x_continuous(limits = c(0, 360), expand = c(0, 0)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_size(range = c(0, 5)) +
+    theme_void()
+}
+```
+
+## Functions for *Viscous Drift*
+
+```{r}
+# Random palette - returns hex values
+sample_lava_palette <- function(n = 256) {
+  hues <- sort(runif(n))
+  sats <- runif(n, 0.7, 1) #saturation
+  vals <- runif(n, 0.8, 1) #brightness
+  hsv(hues, sats, vals)
+}
+
+# Single frame generator with time offset
+lava_frame <- function(frame, pixels = 400, speed = 100, freq = 3) {
+  z_offset <- frame / speed  # change speed of animation - divide by larger # to slow
+  
+  # create grid of pixels
+  grid <- long_grid(
+    x = seq(0, 1, length.out = pixels),
+    y = seq(0, 1, length.out = pixels)
+  ) |>
+    mutate(
+      paint = fracture(
+        x = x,
+        y = y,
+        z = z_offset,
+        noise = gen_simplex, # simplex noise generator to look like lava lamp
+        fractal = fbm, # fractal Brownian motion
+        octaves = 1, # can't notice changes when adjusting
+        frequency = freq # changes number of blobs, want to keep low
+      ),
+      paint = normalise(paint)
+    ) |>
+    as.array(value = paint)
+  
+  # generates color palette
+  lava_palette <- sample_lava_palette(256)
+  
+  # apply shading
+  img <- height_shade(grid, texture = lava_palette)
+  
+  image_read(img)
+}
+
+#gif function
+make_lava_gif <- function(frames = 40, fps = 1, speed = 100, freq = 3) {
+  
+  # check that fps is a factor of 100 (needed for function)
+  if (100 %% fps != 0){
+    stop("fps must be a factor of 100")
+  }
+  
+  # animates frames
+  images <- map(1:frames, ~ lava_frame(.x, speed = speed, freq = freq))
+  animation <- image_animate(image_join(images), fps = fps)
+  
+  return(animation)
+}
+```
