@@ -6,3 +6,164 @@ draft: false
 toc: false
 ---
 
+```{r, include=F}
+library(httr)
+library(curl)
+library(rvest)
+library(tidyverse)
+library(purrr)
+```
+
+# Fucntions for pulling all cheeses
+
+```{r}
+#| label: helper function
+
+get_text_from_page <- function(page, css_selector) {
+    
+  page %>%
+    html_elements(css_selector) %>%
+    html_text(trim = T)
+}
+
+get_url_from_page <- function(page, css_selector) {
+    
+  page %>%
+    html_elements(css_selector) %>%
+    html_attr("href")
+}
+
+get_image_from_page <- function(page, css_selector) {
+    
+  page %>%
+    html_elements(css_selector) %>%
+    html_attr("src")
+}
+
+scrape_page <- function(url) {
+    
+    # 1 second crawl delay
+    Sys.sleep(1)
+    
+    # Read the page
+    page <- read_html(url)
+    
+    # Grab elements from the page
+    cheese_names <- get_text_from_page(page, ".product-item")
+    cheese_url <- get_url_from_page(page, ".product-item a")
+    cheese_image <- get_image_from_page(page, ".product-item img")
+    
+    # Clean cheese names
+    cheese_names <- cheese_names %>%
+      trimws()
+    
+    cheese_names <- ifelse(
+      str_detect(cheese_names, "Stores >"),
+      str_trim(str_extract(cheese_names, "[^\n]+$")),
+      cheese_names
+      )
+    
+    # Full cheese URL
+    base_url <- "https://www.cheese.com"
+    cheese_url <- paste0(base_url, cheese_url)
+    cheese_url <- unique(cheese_url[!grepl("store", cheese_url)]) #remove store links + duplicates
+    
+    # Find cheeses with image
+    has_image <- ifelse(grepl("static", cheese_image), "No", "Yes")
+    
+    #Put page elements into a dataframe
+    cheeses <- data.frame(
+      cheese = cheese_names,
+      url = cheese_url,
+      image = has_image
+    )
+    
+    return(cheeses)
+}
+
+```
+
+# Pulling all cheeses
+
+```{r}
+#| label: All cheese info
+
+base_url <- "https://www.cheese.com/alphabetical/?per_page=100"
+
+urls_all_pages <- c(str_c(base_url,
+                          "&page=",
+                          1:21)
+                     )
+
+all_pages <- map(urls_all_pages, scrape_page)
+
+all_cheeses <- bind_rows(all_pages)
+
+head(all_cheeses)
+```
+
+# Functions for pulling detailed cheese info
+
+```{r}
+#| label: helper functions 2
+
+clean_info <- function(text, fallback) {
+  if (length(text) == 0) {
+    return(fallback)
+  } else {
+    cleaned <- sub(".*?:\\s*", "", text) # Extract everything after ": "
+    return(trimws(cleaned))
+  }
+}
+
+scrape_cheese <- function(url) {
+    
+    # 1 second crawl delay
+    Sys.sleep(1)
+    
+    # Read the page
+    page <- read_html(url)
+    
+    # Grab elements from the page
+    milk <- get_text_from_page(page, ".summary_milk")
+    country <- get_text_from_page(page, ".summary_country")
+    family <- get_text_from_page(page, ".summary_family")
+    type <- get_text_from_page(page, ".summary_moisture_and_type")
+    flavor <- get_text_from_page(page, ".summary_taste")
+    
+    # Clean elements
+    milk <- clean_info(milk, "No milk information available")
+    country <- clean_info(country, "No country information available")
+    family <- clean_info(family, "No family information available")
+    type <- clean_info(type, "No type information available")
+    flavor <- clean_info(flavor, "No flavor information available")
+    
+    # Puts elements into data frame
+    cheese <- data.frame(
+      milk = milk,
+      country = country,
+      family = family,
+      type = type,
+      flavor = flavor
+    )
+}
+```
+
+# Pulling detailed cheese info
+
+```{r}
+#| label: cheese detail info
+
+sampled_cheeses <- all_cheeses %>%
+  sample_n(10)
+
+detailed_cheeses <- sampled_cheeses$url %>%
+  map_df(scrape_cheese)
+
+final_cheese_info <- bind_cols(
+  sampled_cheeses %>% select(cheese),
+  detailed_cheeses
+)
+
+print(final_cheese_info)
+```

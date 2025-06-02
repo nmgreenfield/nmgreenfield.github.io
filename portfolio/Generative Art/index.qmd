@@ -135,6 +135,8 @@ make_lava_gif <- function(frames = 40, fps = 1, speed = 100, freq = 3) {
 # *Fragmented Orbit*
 
 ```{r}
+#| echo: false
+
 polar_art_dual(
   seed = 1,
   n = 400,
@@ -149,6 +151,8 @@ In Fragmented Orbit, the artist explores the delicate tension between order and 
 # *Viscous Drift*
 
 ```{r}
+#| echo: false
+
 gif_animation <- make_lava_gif()
 gif_animation
 ```
