@@ -171,6 +171,6 @@ final_cheese_info <- bind_cols(
   detailed_cheeses
 )
 
-print(final_cheese_info) %>%
+final_cheese_info %>%
   gt()
 ```
