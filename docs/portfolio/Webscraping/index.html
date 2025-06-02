@@ -248,22 +248,502 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>all_cheeses <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(all_pages)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_cheeses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                             cheese
-1           2 Year Aged Cumin Gouda
-2            3-Cheese Italian Blend
-3 30 Month Aged Parmigiano Reggiano
-4           3yrs Aged Vintage Gouda
-5                        Aarewasser
-6                  Abbaye de Belloc
-                                                             url image
-1                https://www.cheese.com/2-year-aged-cumin-gouda/   Yes
-2                 https://www.cheese.com/3-cheese-italian-blend/    No
-3 https://www.cheese.com/30-month-aged-parmigiano-reggiano-150g/   Yes
-4                https://www.cheese.com/3yrs-aged-vintage-gouda/   Yes
-5                             https://www.cheese.com/aarewasser/   Yes
-6                       https://www.cheese.com/abbaye-de-belloc/   Yes</code></pre>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_cheeses) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="sxxxbjjwvs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sxxxbjjwvs table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#sxxxbjjwvs thead, #sxxxbjjwvs tbody, #sxxxbjjwvs tfoot, #sxxxbjjwvs tr, #sxxxbjjwvs td, #sxxxbjjwvs th {
+  border-style: none;
+}
+
+#sxxxbjjwvs p {
+  margin: 0;
+  padding: 0;
+}
+
+#sxxxbjjwvs .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#sxxxbjjwvs .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#sxxxbjjwvs .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#sxxxbjjwvs .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#sxxxbjjwvs .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#sxxxbjjwvs .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#sxxxbjjwvs .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#sxxxbjjwvs .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#sxxxbjjwvs .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#sxxxbjjwvs .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#sxxxbjjwvs .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sxxxbjjwvs .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#sxxxbjjwvs .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#sxxxbjjwvs .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#sxxxbjjwvs .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sxxxbjjwvs .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#sxxxbjjwvs .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#sxxxbjjwvs .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#sxxxbjjwvs .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sxxxbjjwvs .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#sxxxbjjwvs .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sxxxbjjwvs .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#sxxxbjjwvs .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sxxxbjjwvs .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sxxxbjjwvs .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sxxxbjjwvs .gt_left {
+  text-align: left;
+}
+
+#sxxxbjjwvs .gt_center {
+  text-align: center;
+}
+
+#sxxxbjjwvs .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#sxxxbjjwvs .gt_font_normal {
+  font-weight: normal;
+}
+
+#sxxxbjjwvs .gt_font_bold {
+  font-weight: bold;
+}
+
+#sxxxbjjwvs .gt_font_italic {
+  font-style: italic;
+}
+
+#sxxxbjjwvs .gt_super {
+  font-size: 65%;
+}
+
+#sxxxbjjwvs .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#sxxxbjjwvs .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#sxxxbjjwvs .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#sxxxbjjwvs .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#sxxxbjjwvs .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#sxxxbjjwvs .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#sxxxbjjwvs .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#sxxxbjjwvs .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#sxxxbjjwvs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="cheese" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">cheese</th>
+<th id="url" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">url</th>
+<th id="image" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">image</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">2 Year Aged Cumin Gouda</td>
+<td class="gt_row gt_left" headers="url">https://www.cheese.com/2-year-aged-cumin-gouda/</td>
+<td class="gt_row gt_left" headers="image">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">3-Cheese Italian Blend</td>
+<td class="gt_row gt_left" headers="url">https://www.cheese.com/3-cheese-italian-blend/</td>
+<td class="gt_row gt_left" headers="image">No</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">30 Month Aged Parmigiano Reggiano</td>
+<td class="gt_row gt_left" headers="url">https://www.cheese.com/30-month-aged-parmigiano-reggiano-150g/</td>
+<td class="gt_row gt_left" headers="image">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">3yrs Aged Vintage Gouda</td>
+<td class="gt_row gt_left" headers="url">https://www.cheese.com/3yrs-aged-vintage-gouda/</td>
+<td class="gt_row gt_left" headers="image">Yes</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Aarewasser</td>
+<td class="gt_row gt_left" headers="url">https://www.cheese.com/aarewasser/</td>
+<td class="gt_row gt_left" headers="image">Yes</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">Abbaye de Belloc</td>
+<td class="gt_row gt_left" headers="url">https://www.cheese.com/abbaye-de-belloc/</td>
+<td class="gt_row gt_left" headers="image">Yes</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 </section>
@@ -271,108 +751,646 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Functions for pulling detailed cheese info</h1>
 <p>These functions are used to pull the detailed cheese information from the urls from the above function. <code>clean_info</code> is used to clean the information that gets scraped from the website and is called by <code>scrape_cheese</code> to pull info on milk, country, family, type, and flavor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean_info <span class="ot">&lt;-</span> <span class="cf">function</span>(text, fallback) {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(text) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(fallback)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    cleaned <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">".*?:</span><span class="sc">\\</span><span class="st">s*"</span>, <span class="st">""</span>, text) <span class="co"># Extract everything after ": "</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">trimws</span>(cleaned))</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>scrape_cheese <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1 second crawl delay</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read the page</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Grab elements from the page</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    milk <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_milk"</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    country <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_country"</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    family <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_family"</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    type <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_moisture_and_type"</span>)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    flavor <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_taste"</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clean elements</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    milk <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(milk, <span class="st">"No milk information available"</span>)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    country <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(country, <span class="st">"No country information available"</span>)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    family <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(family, <span class="st">"No family information available"</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    type <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(type, <span class="st">"No type information available"</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    flavor <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(flavor, <span class="st">"No flavor information available"</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Puts elements into data frame</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    cheese <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">milk =</span> milk,</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">country =</span> country,</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">family =</span> family,</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> type,</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">flavor =</span> flavor</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>clean_info <span class="ot">&lt;-</span> <span class="cf">function</span>(text, fallback) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(text) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(fallback)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    cleaned <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">".*?:</span><span class="sc">\\</span><span class="st">s*"</span>, <span class="st">""</span>, text) <span class="co"># Extract everything after ": "</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">trimws</span>(cleaned))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>scrape_cheese <span class="ot">&lt;-</span> <span class="cf">function</span>(url) {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1 second crawl delay</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read the page</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Grab elements from the page</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    milk <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_milk"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    country <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_country"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    family <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_family"</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    type <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_moisture_and_type"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    flavor <span class="ot">&lt;-</span> <span class="fu">get_text_from_page</span>(page, <span class="st">".summary_taste"</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clean elements</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    milk <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(milk, <span class="st">"No milk information available"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    country <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(country, <span class="st">"No country information available"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    family <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(family, <span class="st">"No family information available"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    type <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(type, <span class="st">"No type information available"</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    flavor <span class="ot">&lt;-</span> <span class="fu">clean_info</span>(flavor, <span class="st">"No flavor information available"</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Puts elements into data frame</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    cheese <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">milk =</span> milk,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">country =</span> country,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">family =</span> family,</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> type,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">flavor =</span> flavor</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="pulling-detailed-cheese-info" class="level1">
 <h1>Pulling detailed cheese info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sampled_cheeses <span class="ot">&lt;-</span> all_cheeses <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>detailed_cheeses <span class="ot">&lt;-</span> sampled_cheeses<span class="sc">$</span>url <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(scrape_cheese)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>final_cheese_info <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  sampled_cheeses <span class="sc">%&gt;%</span> <span class="fu">select</span>(cheese),</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  detailed_cheeses</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final_cheese_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sampled_cheeses <span class="ot">&lt;-</span> all_cheeses <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>detailed_cheeses <span class="ot">&lt;-</span> sampled_cheeses<span class="sc">$</span>url <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(scrape_cheese)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>final_cheese_info <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  sampled_cheeses <span class="sc">%&gt;%</span> <span class="fu">select</span>(cheese),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  detailed_cheeses</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final_cheese_info) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                             cheese
-1                                     Midnight Blue
-2                            Goat on a Hot Tin Roof
-3                                      Bra Duro DOP
-4  Sartori Limited Edition Family Heirloom Parmesan
-5                                          Barlocco
-6                                        Carboncino
-7                                    Wakatipu White
-8                                           Penbryn
-9                                    President Brie
-10                                            Meira
-                                      milk
-1      Made from unpasteurized goat's milk
-2        Made from pasteurized goat's milk
-3         Made from pasteurized cow's milk
-4         Made from pasteurized cow's milk
-5         Made from pasteurized cow's milk
-6  Made from cow's, goat's or sheep's milk
-7                     Made from cow's milk
-8                     Made from cow's milk
-9         Made from pasteurized cow's milk
-10                  Made from sheep's milk
-                                   country                          family
-1                            United States                            Blue
-2                                Australia No family information available
-3                                    Italy No family information available
-4                            United States                        Parmesan
-5                                 Scotland No family information available
-6                                    Italy No family information available
-7                              New Zealand                            Brie
-8  Great Britain, United Kingdom and Wales                           Gouda
-9                                   France                            Brie
-10                                    Iraq No family information available
-                          type                                 flavor
-1       semi-soft, blue-veined                  pungent, sharp, spicy
-2          fresh firm, artisan                      herbaceous, spicy
-3                         hard                          salty, savory
-4                hard, artisan caramel, fruity, nutty, piquant, sweet
-5                    semi-soft                          full-flavored
-6                   fresh soft        No flavor information available
-7           soft, soft-ripened                     buttery, mushroomy
-8                         hard  buttery, fruity, grassy, nutty, sweet
-9  soft, artisan, soft-ripened                buttery, creamy, subtle
-10                   semi-hard        No flavor information available</code></pre>
+<pre><code>               cheese                                          milk
+1          Mastorazio          Made from unpasteurized sheep's milk
+2     St Tola Crottin           Made from unpasteurized goat's milk
+3             Seahive              Made from pasteurized cow's milk
+4    Queso del Tietar           Made from unpasteurized goat's milk
+5          Wellington                          Made from cow's milk
+6            Myzithra              Made from goat's or sheep's milk
+7         Essex Comté            Made from unpasteurized cow's milk
+8             McLaren              Made from pasteurized cow's milk
+9  Echo Mountain Blue Made from unpasteurized cow's and goat's milk
+10     Baby Katherine           Made from unpasteurized goat's milk
+          country                          family                        type
+1           Italy No family information available               hard, artisan
+2         Ireland No family information available                        soft
+3   United States                         Cheddar               hard, artisan
+4           Spain No family information available               hard, artisan
+5         England No family information available                        hard
+6          Greece                         Cottage                  soft, whey
+7          France No family information available                        hard
+8       Australia                       Camembert soft, artisan, soft-ripened
+9   United States                            Blue      semi-soft, blue-veined
+10 United Kingdom No family information available                   semi-hard
+                            flavor
+1  herbaceous, nutty, sharp, spicy
+2                    lemony, sweet
+3                     salty, sweet
+4      acidic, nutty, salty, sharp
+5                            nutty
+6                             mild
+7                  buttery, creamy
+8        creamy, mushroomy, smooth
+9            earthy, subtle, tangy
+10                          smooth</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="ioukydtewo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ioukydtewo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ioukydtewo thead, #ioukydtewo tbody, #ioukydtewo tfoot, #ioukydtewo tr, #ioukydtewo td, #ioukydtewo th {
+  border-style: none;
+}
+
+#ioukydtewo p {
+  margin: 0;
+  padding: 0;
+}
+
+#ioukydtewo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ioukydtewo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ioukydtewo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ioukydtewo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ioukydtewo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ioukydtewo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ioukydtewo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ioukydtewo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ioukydtewo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ioukydtewo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ioukydtewo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ioukydtewo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ioukydtewo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ioukydtewo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ioukydtewo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ioukydtewo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ioukydtewo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ioukydtewo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ioukydtewo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ioukydtewo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ioukydtewo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ioukydtewo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ioukydtewo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ioukydtewo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ioukydtewo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ioukydtewo .gt_left {
+  text-align: left;
+}
+
+#ioukydtewo .gt_center {
+  text-align: center;
+}
+
+#ioukydtewo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ioukydtewo .gt_font_normal {
+  font-weight: normal;
+}
+
+#ioukydtewo .gt_font_bold {
+  font-weight: bold;
+}
+
+#ioukydtewo .gt_font_italic {
+  font-style: italic;
+}
+
+#ioukydtewo .gt_super {
+  font-size: 65%;
+}
+
+#ioukydtewo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ioukydtewo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ioukydtewo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ioukydtewo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ioukydtewo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ioukydtewo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ioukydtewo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ioukydtewo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ioukydtewo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="cheese" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">cheese</th>
+<th id="milk" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">milk</th>
+<th id="country" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">country</th>
+<th id="family" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">family</th>
+<th id="type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type</th>
+<th id="flavor" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">flavor</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Mastorazio</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized sheep's milk</td>
+<td class="gt_row gt_left" headers="country">Italy</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard, artisan</td>
+<td class="gt_row gt_left" headers="flavor">herbaceous, nutty, sharp, spicy</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">St Tola Crottin</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized goat's milk</td>
+<td class="gt_row gt_left" headers="country">Ireland</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">soft</td>
+<td class="gt_row gt_left" headers="flavor">lemony, sweet</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Seahive</td>
+<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">United States</td>
+<td class="gt_row gt_left" headers="family">Cheddar</td>
+<td class="gt_row gt_left" headers="type">hard, artisan</td>
+<td class="gt_row gt_left" headers="flavor">salty, sweet</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">Queso del Tietar</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized goat's milk</td>
+<td class="gt_row gt_left" headers="country">Spain</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard, artisan</td>
+<td class="gt_row gt_left" headers="flavor">acidic, nutty, salty, sharp</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Wellington</td>
+<td class="gt_row gt_left" headers="milk">Made from cow's milk</td>
+<td class="gt_row gt_left" headers="country">England</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard</td>
+<td class="gt_row gt_left" headers="flavor">nutty</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">Myzithra</td>
+<td class="gt_row gt_left" headers="milk">Made from goat's or sheep's milk</td>
+<td class="gt_row gt_left" headers="country">Greece</td>
+<td class="gt_row gt_left" headers="family">Cottage</td>
+<td class="gt_row gt_left" headers="type">soft, whey</td>
+<td class="gt_row gt_left" headers="flavor">mild</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Essex Comté</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">France</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard</td>
+<td class="gt_row gt_left" headers="flavor">buttery, creamy</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">McLaren</td>
+<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">Australia</td>
+<td class="gt_row gt_left" headers="family">Camembert</td>
+<td class="gt_row gt_left" headers="type">soft, artisan, soft-ripened</td>
+<td class="gt_row gt_left" headers="flavor">creamy, mushroomy, smooth</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Echo Mountain Blue</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized cow's and goat's milk</td>
+<td class="gt_row gt_left" headers="country">United States</td>
+<td class="gt_row gt_left" headers="family">Blue</td>
+<td class="gt_row gt_left" headers="type">semi-soft, blue-veined</td>
+<td class="gt_row gt_left" headers="flavor">earthy, subtle, tangy</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">Baby Katherine</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized goat's milk</td>
+<td class="gt_row gt_left" headers="country">United Kingdom</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">semi-hard</td>
+<td class="gt_row gt_left" headers="flavor">smooth</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 
