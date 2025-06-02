@@ -16,6 +16,8 @@ library(purrr)
 
 # Fucntions for pulling all cheeses
 
+These functions are used to pull cheese information from the `cheese.com` website. `get_text_from_page` is used to get the names of each cheese, `get_url_from_page` is used to get the url for each cheese, and `get_image_from_page` is used to get the image for each cheese. `scrape page` is then used to call the other functions to get the information for all the cheeses.  
+
 ```{r}
 #| label: helper function
 
@@ -103,6 +105,8 @@ head(all_cheeses)
 ```
 
 # Functions for pulling detailed cheese info
+
+These functions are used to pull the detailed cheese information from the urls from the above function. `clean_info` is used to clean the information that gets scraped from the website and is called by `scrape_cheese` to pull info on milk, country, family, type, and flavor. 
 
 ```{r}
 #| label: helper functions 2

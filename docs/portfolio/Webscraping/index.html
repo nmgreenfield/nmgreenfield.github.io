@@ -169,6 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="fucntions-for-pulling-all-cheeses" class="level1">
 <h1>Fucntions for pulling all cheeses</h1>
+<p>These functions are used to pull cheese information from the <code>cheese.com</code> website. <code>get_text_from_page</code> is used to get the names of each cheese, <code>get_url_from_page</code> is used to get the url for each cheese, and <code>get_image_from_page</code> is used to get the image for each cheese. <code>scrape page</code> is then used to call the other functions to get the information for all the cheeses.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>get_text_from_page <span class="ot">&lt;-</span> <span class="cf">function</span>(page, css_selector) {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -268,6 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="functions-for-pulling-detailed-cheese-info" class="level1">
 <h1>Functions for pulling detailed cheese info</h1>
+<p>These functions are used to pull the detailed cheese information from the urls from the above function. <code>clean_info</code> is used to clean the information that gets scraped from the website and is called by <code>scrape_cheese</code> to pull info on milk, country, family, type, and flavor.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean_info <span class="ot">&lt;-</span> <span class="cf">function</span>(text, fallback) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(text) <span class="sc">==</span> <span class="dv">0</span>) {</span>
@@ -327,50 +329,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final_cheese_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                        cheese                                         milk
-1  Twig Farm Washed Rind Wheel Made from unpasteurized cow's or goat's milk
-2                  Woolly Rind           Made from pasteurized sheep's milk
-3              Tomme de Romans             Made from pasteurized cow's milk
-4                        Manur              Made from cow's or sheep's milk
-5     Organic Mountain Climber           Made from unpasteurized cow's milk
-6                 Heidi cheese             Made from pasteurized cow's milk
-7                    Gammelost                 Made from skimmed cow's milk
-8           Abbaye de Timadeuc             Made from pasteurized cow's milk
-9             Crayeux de Roncq           Made from unpasteurized cow's milk
-10              Shredded Bliss                No milk information available
-                    country                          family
-1             United States No family information available
-2             United States                       Camembert
-3                    France No family information available
-4                    Serbia No family information available
-5                   Austria No family information available
-6                 Australia No family information available
-7                    Norway                            Blue
-8                    France No family information available
-9                    France No family information available
-10 Canada and United States                      Mozzarella
-                          type
-1           semi-soft, artisan
-2           semi-soft, artisan
-3       semi-hard, blue-veined
-4                hard, artisan
-5                hard, artisan
-6                hard, artisan
-7            firm, blue-veined
-8                    semi-hard
-9  soft, artisan, soft-ripened
-10                   semi-soft
-                                                flavor
-1  floral, full-flavored, grassy, meaty, savory, tangy
-2             buttery, grassy, milky, mushroomy, sweet
-3                                 nutty, smooth, sweet
-4                                                salty
-5                                         sharp, spicy
-6                                                nutty
-7                                                sharp
-8                                        salty, smooth
-9                         full-flavored, strong, sweet
-10                                         mild, milky</code></pre>
+<pre><code>                                             cheese
+1                                     Midnight Blue
+2                            Goat on a Hot Tin Roof
+3                                      Bra Duro DOP
+4  Sartori Limited Edition Family Heirloom Parmesan
+5                                          Barlocco
+6                                        Carboncino
+7                                    Wakatipu White
+8                                           Penbryn
+9                                    President Brie
+10                                            Meira
+                                      milk
+1      Made from unpasteurized goat's milk
+2        Made from pasteurized goat's milk
+3         Made from pasteurized cow's milk
+4         Made from pasteurized cow's milk
+5         Made from pasteurized cow's milk
+6  Made from cow's, goat's or sheep's milk
+7                     Made from cow's milk
+8                     Made from cow's milk
+9         Made from pasteurized cow's milk
+10                  Made from sheep's milk
+                                   country                          family
+1                            United States                            Blue
+2                                Australia No family information available
+3                                    Italy No family information available
+4                            United States                        Parmesan
+5                                 Scotland No family information available
+6                                    Italy No family information available
+7                              New Zealand                            Brie
+8  Great Britain, United Kingdom and Wales                           Gouda
+9                                   France                            Brie
+10                                    Iraq No family information available
+                          type                                 flavor
+1       semi-soft, blue-veined                  pungent, sharp, spicy
+2          fresh firm, artisan                      herbaceous, spicy
+3                         hard                          salty, savory
+4                hard, artisan caramel, fruity, nutty, piquant, sweet
+5                    semi-soft                          full-flavored
+6                   fresh soft        No flavor information available
+7           soft, soft-ripened                     buttery, mushroomy
+8                         hard  buttery, fruity, grassy, nutty, sweet
+9  soft, artisan, soft-ripened                buttery, creamy, subtle
+10                   semi-hard        No flavor information available</code></pre>
 </div>
 </div>
 
