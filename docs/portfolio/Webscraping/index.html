@@ -167,8 +167,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="fucntions-for-pulling-all-cheeses" class="level1">
-<h1>Fucntions for pulling all cheeses</h1>
+<section id="functions-for-pulling-all-cheeses" class="level1">
+<h1>Functions for pulling all cheeses</h1>
 <p>These functions are used to pull cheese information from the <code>cheese.com</code> website. <code>get_text_from_page</code> is used to get the names of each cheese, <code>get_url_from_page</code> is used to get the url for each cheese, and <code>get_image_from_page</code> is used to get the image for each cheese. <code>scrape page</code> is then used to call the other functions to get the information for all the cheeses.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>get_text_from_page <span class="ot">&lt;-</span> <span class="cf">function</span>(page, css_selector) {</span>
@@ -251,23 +251,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_cheeses) <span class="sc">%&gt;%</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="obwzwnbvmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#obwzwnbvmq table {
+<div id="woosxeksqa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#woosxeksqa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#obwzwnbvmq thead, #obwzwnbvmq tbody, #obwzwnbvmq tfoot, #obwzwnbvmq tr, #obwzwnbvmq td, #obwzwnbvmq th {
+#woosxeksqa thead, #woosxeksqa tbody, #woosxeksqa tfoot, #woosxeksqa tr, #woosxeksqa td, #woosxeksqa th {
   border-style: none;
 }
 
-#obwzwnbvmq p {
+#woosxeksqa p {
   margin: 0;
   padding: 0;
 }
 
-#obwzwnbvmq .gt_table {
+#woosxeksqa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -293,12 +293,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_caption {
+#woosxeksqa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#obwzwnbvmq .gt_title {
+#woosxeksqa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -310,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#obwzwnbvmq .gt_subtitle {
+#woosxeksqa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -322,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#obwzwnbvmq .gt_heading {
+#woosxeksqa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -334,13 +334,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_bottom_border {
+#woosxeksqa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_col_headings {
+#woosxeksqa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -355,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_col_heading {
+#woosxeksqa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -375,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#obwzwnbvmq .gt_column_spanner_outer {
+#woosxeksqa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -387,15 +387,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#obwzwnbvmq .gt_column_spanner_outer:first-child {
+#woosxeksqa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#obwzwnbvmq .gt_column_spanner_outer:last-child {
+#woosxeksqa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#obwzwnbvmq .gt_column_spanner {
+#woosxeksqa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -407,11 +407,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#obwzwnbvmq .gt_spanner_row {
+#woosxeksqa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#obwzwnbvmq .gt_group_heading {
+#woosxeksqa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -437,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#obwzwnbvmq .gt_empty_group_heading {
+#woosxeksqa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -452,15 +452,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#obwzwnbvmq .gt_from_md > :first-child {
+#woosxeksqa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#obwzwnbvmq .gt_from_md > :last-child {
+#woosxeksqa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#obwzwnbvmq .gt_row {
+#woosxeksqa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -479,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#obwzwnbvmq .gt_stub {
+#woosxeksqa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -492,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#obwzwnbvmq .gt_stub_row_group {
+#woosxeksqa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -506,15 +506,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#obwzwnbvmq .gt_row_group_first td {
+#woosxeksqa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#obwzwnbvmq .gt_row_group_first th {
+#woosxeksqa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#obwzwnbvmq .gt_summary_row {
+#woosxeksqa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -524,16 +524,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#obwzwnbvmq .gt_first_summary_row {
+#woosxeksqa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_first_summary_row.thick {
+#woosxeksqa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#obwzwnbvmq .gt_last_summary_row {
+#woosxeksqa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -543,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_grand_summary_row {
+#woosxeksqa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -553,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#obwzwnbvmq .gt_first_grand_summary_row {
+#woosxeksqa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -563,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_last_grand_summary_row_top {
+#woosxeksqa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,11 +573,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_striped {
+#woosxeksqa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#obwzwnbvmq .gt_table_body {
+#woosxeksqa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -586,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_footnotes {
+#woosxeksqa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -600,7 +600,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_footnote {
+#woosxeksqa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -609,7 +609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#obwzwnbvmq .gt_sourcenotes {
+#woosxeksqa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -623,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#obwzwnbvmq .gt_sourcenote {
+#woosxeksqa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -631,72 +631,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#obwzwnbvmq .gt_left {
+#woosxeksqa .gt_left {
   text-align: left;
 }
 
-#obwzwnbvmq .gt_center {
+#woosxeksqa .gt_center {
   text-align: center;
 }
 
-#obwzwnbvmq .gt_right {
+#woosxeksqa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#obwzwnbvmq .gt_font_normal {
+#woosxeksqa .gt_font_normal {
   font-weight: normal;
 }
 
-#obwzwnbvmq .gt_font_bold {
+#woosxeksqa .gt_font_bold {
   font-weight: bold;
 }
 
-#obwzwnbvmq .gt_font_italic {
+#woosxeksqa .gt_font_italic {
   font-style: italic;
 }
 
-#obwzwnbvmq .gt_super {
+#woosxeksqa .gt_super {
   font-size: 65%;
 }
 
-#obwzwnbvmq .gt_footnote_marks {
+#woosxeksqa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#obwzwnbvmq .gt_asterisk {
+#woosxeksqa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#obwzwnbvmq .gt_indent_1 {
+#woosxeksqa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#obwzwnbvmq .gt_indent_2 {
+#woosxeksqa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#obwzwnbvmq .gt_indent_3 {
+#woosxeksqa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#obwzwnbvmq .gt_indent_4 {
+#woosxeksqa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#obwzwnbvmq .gt_indent_5 {
+#woosxeksqa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#obwzwnbvmq .katex-display {
+#woosxeksqa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#obwzwnbvmq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#woosxeksqa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -810,23 +810,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>final_cheese_info <span class="sc">%&gt;%</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="timxsyooux" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#timxsyooux table {
+<div id="aeitxnercv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aeitxnercv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#timxsyooux thead, #timxsyooux tbody, #timxsyooux tfoot, #timxsyooux tr, #timxsyooux td, #timxsyooux th {
+#aeitxnercv thead, #aeitxnercv tbody, #aeitxnercv tfoot, #aeitxnercv tr, #aeitxnercv td, #aeitxnercv th {
   border-style: none;
 }
 
-#timxsyooux p {
+#aeitxnercv p {
   margin: 0;
   padding: 0;
 }
 
-#timxsyooux .gt_table {
+#aeitxnercv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -852,12 +852,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#timxsyooux .gt_caption {
+#aeitxnercv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#timxsyooux .gt_title {
+#aeitxnercv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -869,7 +869,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#timxsyooux .gt_subtitle {
+#aeitxnercv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -881,7 +881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#timxsyooux .gt_heading {
+#aeitxnercv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -893,13 +893,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#timxsyooux .gt_bottom_border {
+#aeitxnercv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#timxsyooux .gt_col_headings {
+#aeitxnercv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -914,7 +914,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#timxsyooux .gt_col_heading {
+#aeitxnercv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -934,7 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#timxsyooux .gt_column_spanner_outer {
+#aeitxnercv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -946,15 +946,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#timxsyooux .gt_column_spanner_outer:first-child {
+#aeitxnercv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#timxsyooux .gt_column_spanner_outer:last-child {
+#aeitxnercv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#timxsyooux .gt_column_spanner {
+#aeitxnercv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -966,11 +966,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#timxsyooux .gt_spanner_row {
+#aeitxnercv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#timxsyooux .gt_group_heading {
+#aeitxnercv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -996,7 +996,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#timxsyooux .gt_empty_group_heading {
+#aeitxnercv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1011,15 +1011,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#timxsyooux .gt_from_md > :first-child {
+#aeitxnercv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#timxsyooux .gt_from_md > :last-child {
+#aeitxnercv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#timxsyooux .gt_row {
+#aeitxnercv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1038,7 +1038,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#timxsyooux .gt_stub {
+#aeitxnercv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1051,7 +1051,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#timxsyooux .gt_stub_row_group {
+#aeitxnercv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1065,15 +1065,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#timxsyooux .gt_row_group_first td {
+#aeitxnercv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#timxsyooux .gt_row_group_first th {
+#aeitxnercv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#timxsyooux .gt_summary_row {
+#aeitxnercv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1083,16 +1083,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#timxsyooux .gt_first_summary_row {
+#aeitxnercv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#timxsyooux .gt_first_summary_row.thick {
+#aeitxnercv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#timxsyooux .gt_last_summary_row {
+#aeitxnercv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1102,7 +1102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#timxsyooux .gt_grand_summary_row {
+#aeitxnercv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1112,7 +1112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#timxsyooux .gt_first_grand_summary_row {
+#aeitxnercv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1122,7 +1122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#timxsyooux .gt_last_grand_summary_row_top {
+#aeitxnercv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1132,11 +1132,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#timxsyooux .gt_striped {
+#aeitxnercv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#timxsyooux .gt_table_body {
+#aeitxnercv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1145,7 +1145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#timxsyooux .gt_footnotes {
+#aeitxnercv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1159,7 +1159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#timxsyooux .gt_footnote {
+#aeitxnercv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1168,7 +1168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#timxsyooux .gt_sourcenotes {
+#aeitxnercv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1182,7 +1182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#timxsyooux .gt_sourcenote {
+#aeitxnercv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1190,72 +1190,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#timxsyooux .gt_left {
+#aeitxnercv .gt_left {
   text-align: left;
 }
 
-#timxsyooux .gt_center {
+#aeitxnercv .gt_center {
   text-align: center;
 }
 
-#timxsyooux .gt_right {
+#aeitxnercv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#timxsyooux .gt_font_normal {
+#aeitxnercv .gt_font_normal {
   font-weight: normal;
 }
 
-#timxsyooux .gt_font_bold {
+#aeitxnercv .gt_font_bold {
   font-weight: bold;
 }
 
-#timxsyooux .gt_font_italic {
+#aeitxnercv .gt_font_italic {
   font-style: italic;
 }
 
-#timxsyooux .gt_super {
+#aeitxnercv .gt_super {
   font-size: 65%;
 }
 
-#timxsyooux .gt_footnote_marks {
+#aeitxnercv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#timxsyooux .gt_asterisk {
+#aeitxnercv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#timxsyooux .gt_indent_1 {
+#aeitxnercv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#timxsyooux .gt_indent_2 {
+#aeitxnercv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#timxsyooux .gt_indent_3 {
+#aeitxnercv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#timxsyooux .gt_indent_4 {
+#aeitxnercv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#timxsyooux .gt_indent_5 {
+#aeitxnercv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#timxsyooux .katex-display {
+#aeitxnercv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#timxsyooux div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aeitxnercv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1273,84 +1273,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="cheese">Herbs de Humboldt</td>
+<td class="gt_row gt_left" headers="cheese">Clonmore</td>
 <td class="gt_row gt_left" headers="milk">Made from pasteurized goat's milk</td>
-<td class="gt_row gt_left" headers="country">United States</td>
-<td class="gt_row gt_left" headers="family">No family information available</td>
-<td class="gt_row gt_left" headers="type">fresh soft, artisan</td>
-<td class="gt_row gt_left" headers="flavor">herbaceous</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="cheese">Beemster Graskaas</td>
-<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
-<td class="gt_row gt_left" headers="country">Netherlands</td>
-<td class="gt_row gt_left" headers="family">No family information available</td>
-<td class="gt_row gt_left" headers="type">soft</td>
-<td class="gt_row gt_left" headers="flavor">creamy, sweet</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="cheese">Alma Vorarlberger Bergkäse (10 months)</td>
-<td class="gt_row gt_left" headers="milk">Made from unpasteurized cow's milk</td>
-<td class="gt_row gt_left" headers="country">Austria</td>
-<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="country">Ireland</td>
+<td class="gt_row gt_left" headers="family">Gouda</td>
 <td class="gt_row gt_left" headers="type">hard, artisan</td>
-<td class="gt_row gt_left" headers="flavor">piquant, spicy, strong, tangy</td>
+<td class="gt_row gt_left" headers="flavor">earthy, mild, milky, nutty, smooth, sweet, tangy</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="cheese">Mersey Valley Original Vintage</td>
-<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
-<td class="gt_row gt_left" headers="country">Australia</td>
-<td class="gt_row gt_left" headers="family">Cheddar</td>
-<td class="gt_row gt_left" headers="type">hard</td>
-<td class="gt_row gt_left" headers="flavor">buttery, full-flavored, sharp</td>
+<td class="gt_row gt_left" headers="cheese">Carrick</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">Scotland</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard, organic</td>
+<td class="gt_row gt_left" headers="flavor">citrusy</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="cheese">Sartori MontAmore</td>
-<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
-<td class="gt_row gt_left" headers="country">United States</td>
-<td class="gt_row gt_left" headers="family">Parmesan</td>
+<td class="gt_row gt_left" headers="cheese">Le Sanérac</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">France</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
 <td class="gt_row gt_left" headers="type">semi-hard, artisan</td>
-<td class="gt_row gt_left" headers="flavor">creamy, fruity, sweet, tangy</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="cheese">Kapiti Kikorangi</td>
-<td class="gt_row gt_left" headers="milk">Made from cow's milk</td>
-<td class="gt_row gt_left" headers="country">New Zealand</td>
-<td class="gt_row gt_left" headers="family">Blue</td>
-<td class="gt_row gt_left" headers="type">semi-soft, blue-veined</td>
-<td class="gt_row gt_left" headers="flavor">buttery, full-flavored, savory</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="cheese">Off Kilter</td>
-<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
-<td class="gt_row gt_left" headers="country">United States</td>
-<td class="gt_row gt_left" headers="family">No family information available</td>
-<td class="gt_row gt_left" headers="type">semi-soft</td>
-<td class="gt_row gt_left" headers="flavor">earthy, meaty, nutty, pungent, sweet, tart</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="cheese">Little Rydings</td>
-<td class="gt_row gt_left" headers="milk">Made from unpasteurized sheep's milk</td>
-<td class="gt_row gt_left" headers="country">England</td>
-<td class="gt_row gt_left" headers="family">No family information available</td>
-<td class="gt_row gt_left" headers="type">soft, artisan</td>
-<td class="gt_row gt_left" headers="flavor">mild, sweet</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="cheese">Hidcote</td>
-<td class="gt_row gt_left" headers="milk">Made from pasteurized sheep's milk</td>
-<td class="gt_row gt_left" headers="country">United Kingdom</td>
-<td class="gt_row gt_left" headers="family">No family information available</td>
-<td class="gt_row gt_left" headers="type">soft</td>
 <td class="gt_row gt_left" headers="flavor">No flavor information available</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="cheese">Yarra Valley Yering</td>
+<td class="gt_row gt_left" headers="cheese">Sartori Reserve Basil &amp; Olive Oil Asiago</td>
+<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">United States</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard, artisan</td>
+<td class="gt_row gt_left" headers="flavor">herbaceous, nutty, savory, sweet</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Sartori Raspberry BellaVitano</td>
+<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">United States</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard, artisan</td>
+<td class="gt_row gt_left" headers="flavor">fruity, nutty, sweet</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">Nettles Gone Wild</td>
+<td class="gt_row gt_left" headers="milk">Made from pasteurized goat's milk</td>
+<td class="gt_row gt_left" headers="country">Italy</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">soft, artisan, soft-ripened</td>
+<td class="gt_row gt_left" headers="flavor">earthy, full-flavored</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Alex James Co. No 1 Cheddar</td>
 <td class="gt_row gt_left" headers="milk">Made from cow's milk</td>
-<td class="gt_row gt_left" headers="country">Australia</td>
-<td class="gt_row gt_left" headers="family">Camembert</td>
-<td class="gt_row gt_left" headers="type">soft, artisan</td>
+<td class="gt_row gt_left" headers="country">United Kingdom</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">hard</td>
 <td class="gt_row gt_left" headers="flavor">sweet</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">Käse Mit Schweizer Trüffeln</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">Switzerland</td>
+<td class="gt_row gt_left" headers="family">Swiss Cheese</td>
+<td class="gt_row gt_left" headers="type">semi-soft, artisan</td>
+<td class="gt_row gt_left" headers="flavor">creamy</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="cheese">Westray Wife</td>
+<td class="gt_row gt_left" headers="milk">Made from pasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">Scotland</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">firm</td>
+<td class="gt_row gt_left" headers="flavor">garlicky, grassy, nutty, salty, savory, umami</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="cheese">Tilly Whim</td>
+<td class="gt_row gt_left" headers="milk">Made from unpasteurized cow's milk</td>
+<td class="gt_row gt_left" headers="country">England, Great Britain and United Kingdom</td>
+<td class="gt_row gt_left" headers="family">No family information available</td>
+<td class="gt_row gt_left" headers="type">semi-soft, artisan</td>
+<td class="gt_row gt_left" headers="flavor">earthy, full-flavored</td>
 </tr>
 </tbody>
 </table>
